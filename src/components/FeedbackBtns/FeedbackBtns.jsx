@@ -2,16 +2,22 @@
 import { Component } from "react"
 // import css from './FeedbackBtns.module.css'
 
+
+
 class FeedbackBtns extends Component {
-    render() {
+     render() {
+        const {feedbacks, onHandleFeedback} = this.props
+        console.log(feedbacks.good)
         return (
             <div>
-                <h2>Please leave feedback</h2>
-                <ul>
-                    <li><button type='button'>Good</button></li>
-                    <li><button type='button'>Neutral</button></li>
-                    <li><button type='button'>Bad</button></li>
-                </ul>
+                <h2>Please leave feedback</h2> 
+                    {/* {feedbacks.map(feedback => (
+                        <button
+                        onClick={() => onHandleFeedback(feedback)}>{feedback}</button>
+                    ))} */}
+                    <button type='button' onClick={this.props.onHandleFeedback(feedbacks.good)}>Good</button>
+                    <button type='button'>Neutral</button>
+                    <button type='button'>Bad</button> 
             </div>
         )
     }
