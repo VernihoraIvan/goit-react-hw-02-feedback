@@ -1,0 +1,30 @@
+.list {
+    font-weight: 400;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+            font-size: 24px; 
+
+}
+
+.list_item {
+    font-size: 24px; 
+    
+}
+
+ .list_item_good{
+        color: green; 
+    }
+
+    .list_item_neutral{
+        color:chartreuse;
+     }
+
+    .list_item_bad {
+        color: red;
+    }
+    
+    .list_item_perc {
+        color: darkblue;
+    }
