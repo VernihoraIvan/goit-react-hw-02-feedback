@@ -6,18 +6,18 @@ import Notification from "./Notification/Notification";
 
 export class App extends Component {
   state = {
-    feedback: {good: 0,
-      neutral: 1,
-      bad: 0},
+    feedback: {
+      good: 0,
+      neutral: 0,
+      bad: 0
+    },
     isHidden: true,
   };
-
-  // handleHide 
 
   handleFeedback = option => {
     this.setState(prevState => {
       // console.log(prevState)
-      // console.log(option)
+      console.log(option)
 
       // return {
       //   [option]: prevState.feedback[option] + 1,
@@ -29,7 +29,7 @@ export class App extends Component {
 
       // return newState;
 
-      return {...prevState, feedback: {...prevState.feedback, [option]: prevState.feedback[option] + 1}}
+      return { ...prevState, feedback: { ...prevState.feedback, [option]: prevState.feedback[option] + 1 } }
 
 
 
@@ -49,13 +49,13 @@ export class App extends Component {
 
   render() {
 
-    const { good, neutral, bad} = this.state.feedback;
-    const {isHidden} = this.state
+    const { good, neutral, bad } = this.state.feedback;
     const totalFeedback = this.countTotalFeedback();
 
     let percentage = this.countPositiveFeedback();
-
     percentage = isNaN(percentage) ? undefined : percentage;
+
+    const isHidden = totalFeedback === 0;
 
     return (
       <div className="container"
@@ -74,13 +74,15 @@ export class App extends Component {
             options={Object.keys(this.state.feedback)} />
         </Section>
         <Section title="Statistics">
-          {isHidden ? <Notification message="There is no feedback"/> : <Statistics
-            good={good}
-            neutral={neutral}
-            bad={bad}
-            total={totalFeedback}
-            positivePercentage={percentage} 
-          />}  
+          {isHidden
+            ? <Notification message="There is no feedback" />
+            : <Statistics
+              good={good}
+              neutral={neutral}
+              bad={bad}
+              total={totalFeedback}
+              positivePercentage={percentage}
+            />}
         </Section>
       </div>
     );
