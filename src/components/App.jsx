@@ -15,9 +15,7 @@ export class App extends Component {
   };
 
   handleFeedback = option => {
-    this.setState(prevState => {
-      // console.log(prevState)
-      console.log(option)
+    this.setState(prevState => { 
 
       // return {
       //   [option]: prevState.feedback[option] + 1,
